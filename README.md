@@ -1,4 +1,4 @@
-# EASYCLASS:
+# ChalkPad:
 A simple and teacher-friendly educational upto-date AI app designed for rural schools. Users can select a `Class → Subject → Chapter → Content` in a clear step-by-step flow, making it easy for teachers and students to access syllabus-based learning materials without complex tools.
 
 ## PROJECT AND ENVIRONMENT SETUP
