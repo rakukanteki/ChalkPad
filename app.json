@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ChalkPad",
-    "slug": "ChalkPad",
+    "slug": "chalkpad",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -46,6 +46,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "abc193a2-1fb7-4674-ad19-054ac11dd29e"
+      }
+    },
+    "owner": "nokibsarkar"
   }
 }
