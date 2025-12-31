@@ -82,7 +82,8 @@ export default function LessonPlan() {
                 পাঠ পরিকল্পনা তৈরিতে আপনাকে স্বাগতম
               </Text>
               <Text
-                className="text-base text-gray-600 mt-3 text-center"
+                numberOfLines={2}
+                className="text-base text-black-600 mt-3 text-center w-full"
                 style={{ fontFamily: "Kalpurush" }}
               >
                 যেকোনো বিষয়ে একটি নির্দেশনা লিখুন,{"\n"}আমরা সেটি থেকে পাঠ পরিকল্পনা তৈরি করব
