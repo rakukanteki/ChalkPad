@@ -1,5 +1,4 @@
 import { DEMO_LESSON_PROMPT, generateLessonPlan } from "@/utils/gemini";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
@@ -8,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import InputSection from "../components/InputSection";
 
 const robot = require('../assets/images/robot.png');
+const backButton = require('../assets/icons/previous-button.png');
 
 type LessonPlanType = {
   lessonTitle: string;
@@ -37,18 +37,37 @@ export default function LessonPlan() {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-900" edges={['top', 'bottom']}>
-      {/* Header Bar */}
-      <View className="flex-row items-center px-4 py-3 bg-gray-800 border-b border-gray-700">
-        <TouchableOpacity onPress={() => router.back()} className="p-2">
-          <Ionicons name="arrow-back" size={24} color="#ffffff" />
-        </TouchableOpacity>
-        <Text 
-          className="text-white text-lg font-bold ml-3"
-          style={{ fontFamily: "Kalpurush" }}
-        >
-          পাঠ পরিকল্পনা তৈরি
-        </Text>
+    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['bottom']}>
+      {/* Header Section */}
+      <View className="px-8 py-6 mt-8">
+        <View className="flex-row items-center justify-between mb-2">
+          {/* Back Button */}
+          <TouchableOpacity 
+            onPress={() => router.back()}
+            className="w-10 h-10 items-center justify-center"
+            activeOpacity={0.7}
+          >
+            <Image 
+              source={backButton} 
+              className="w-15 h-8" 
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+
+          {/* Title */}
+          <Text 
+            numberOfLines={1}
+            className="text-black text-2xl font-bold text-center flex-1"
+            style={{ fontFamily: 'Kalpurush' }}
+          >
+            পাঠ পরিকল্পনা
+          </Text>
+
+          {/* Spacer for alignment */}
+          <View className="w-10 h-10" />
+        </View>
+
+        <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
       </View>
 
       <View className="flex-1">
@@ -57,13 +76,13 @@ export default function LessonPlan() {
             <View className="items-center mb-8">
               <Image source={robot} style={{ width: 150, height: 150 }} />
               <Text
-                className="text-xl font-bold text-white mt-6 text-center"
+                className="text-xl font-bold text-black mt-6 text-center"
                 style={{ fontFamily: "Kalpurush" }}
               >
                 পাঠ পরিকল্পনা তৈরিতে আপনাকে স্বাগতম
               </Text>
               <Text
-                className="text-base text-gray-400 mt-3 text-center"
+                className="text-base text-gray-600 mt-3 text-center"
                 style={{ fontFamily: "Kalpurush" }}
               >
                 যেকোনো বিষয়ে একটি নির্দেশনা লিখুন,{"\n"}আমরা সেটি থেকে পাঠ পরিকল্পনা তৈরি করব
@@ -82,7 +101,7 @@ export default function LessonPlan() {
           <View className="flex-1 justify-center items-center">
             <ActivityIndicator size="large" color="#10b981" />
             <Text
-              className="mt-4 text-gray-400 text-base"
+              className="mt-4 text-gray-600 text-base"
               style={{ fontFamily: "Kalpurush" }}
             >
               পাঠ পরিকল্পনা তৈরি হচ্ছে...
@@ -93,9 +112,9 @@ export default function LessonPlan() {
         {state === "fetched" && lessonPlan && (
           <ScrollView className="flex-1 px-6 py-4">
             {/* Title Card */}
-            <View className="bg-gray-800 rounded-2xl p-6 mb-6">
+            <View className="bg-white rounded-2xl p-6 mb-6 shadow-sm">
               <Text
-                className="text-2xl font-bold text-white mb-4 text-center"
+                className="text-2xl font-bold text-black mb-4 text-center"
                 style={{ fontFamily: "Kalpurush" }}
               >
                 📖 পাঠ পরিকল্পনা
@@ -103,28 +122,28 @@ export default function LessonPlan() {
               
               <View className="space-y-3">
                 <View className="flex-row">
-                  <Text className="text-gray-400 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-gray-600 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
                     শিরোনাম:
                   </Text>
-                  <Text className="text-white text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-black text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
                     {lessonPlan.lessonTitle || "—"}
                   </Text>
                 </View>
                 
                 <View className="flex-row">
-                  <Text className="text-gray-400 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-gray-600 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
                     শ্রেণি:
                   </Text>
-                  <Text className="text-white text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-black text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
                     {lessonPlan.gradeLevel || "—"}
                   </Text>
                 </View>
                 
                 <View className="flex-row">
-                  <Text className="text-gray-400 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-gray-600 text-base w-24" style={{ fontFamily: "Kalpurush" }}>
                     সময়কাল:
                   </Text>
-                  <Text className="text-white text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
+                  <Text className="text-black text-base flex-1" style={{ fontFamily: "Kalpurush" }}>
                     {lessonPlan.duration || "—"}
                   </Text>
                 </View>
@@ -132,13 +151,13 @@ export default function LessonPlan() {
             </View>
 
             {/* Objectives Section */}
-            <View className="bg-gray-800 rounded-2xl p-5 mb-4">
-              <Text className="text-white text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
+            <View className="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+              <Text className="text-black text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
                 🎯 উদ্দেশ্যসমূহ
               </Text>
               {lessonPlan.objectives?.length ? (
                 lessonPlan.objectives.map((o, i) => (
-                  <Text key={i} className="text-gray-300 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
+                  <Text key={i} className="text-gray-700 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
                     • {o}
                   </Text>
                 ))
@@ -148,13 +167,13 @@ export default function LessonPlan() {
             </View>
 
             {/* Materials Section */}
-            <View className="bg-gray-800 rounded-2xl p-5 mb-4">
-              <Text className="text-white text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
+            <View className="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+              <Text className="text-black text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
                 📚 প্রয়োজনীয় উপকরণ
               </Text>
               {lessonPlan.materials?.length ? (
                 lessonPlan.materials.map((m, i) => (
-                  <Text key={i} className="text-gray-300 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
+                  <Text key={i} className="text-gray-700 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
                     • {m}
                   </Text>
                 ))
@@ -164,15 +183,15 @@ export default function LessonPlan() {
             </View>
 
             {/* Activities Section */}
-            <View className="bg-gray-800 rounded-2xl p-5 mb-4">
-              <Text className="text-white text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
+            <View className="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+              <Text className="text-black text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
                 🧩 কার্যক্রম
               </Text>
               {lessonPlan.activities?.length ? (
                 lessonPlan.activities.map((a, i) => (
                   <View key={i} className="mb-3">
-                    <Text className="text-gray-300 text-base" style={{ fontFamily: "Kalpurush" }}>
-                      <Text className="font-bold text-green-400">{i + 1}. </Text>
+                    <Text className="text-gray-700 text-base" style={{ fontFamily: "Kalpurush" }}>
+                      <Text className="font-bold text-green-600">{i + 1}. </Text>
                       {a.description}
                     </Text>
                   </View>
@@ -183,13 +202,13 @@ export default function LessonPlan() {
             </View>
 
             {/* Assessment Section */}
-            <View className="bg-gray-800 rounded-2xl p-5 mb-4">
-              <Text className="text-white text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
+            <View className="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+              <Text className="text-black text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
                 📝 মূল্যায়ন
               </Text>
               {lessonPlan.assessment?.length ? (
                 lessonPlan.assessment.map((a, i) => (
-                  <Text key={i} className="text-gray-300 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
+                  <Text key={i} className="text-gray-700 text-base mb-2 ml-2" style={{ fontFamily: "Kalpurush" }}>
                     • {a}
                   </Text>
                 ))
@@ -200,11 +219,11 @@ export default function LessonPlan() {
 
             {/* Homework Section */}
             {lessonPlan.homework && (
-              <View className="bg-gray-800 rounded-2xl p-5 mb-4">
-                <Text className="text-white text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
+              <View className="bg-white rounded-2xl p-5 mb-4 shadow-sm">
+                <Text className="text-black text-lg font-bold mb-3" style={{ fontFamily: "Kalpurush" }}>
                   🏠 বাড়ির কাজ
                 </Text>
-                <Text className="text-gray-300 text-base" style={{ fontFamily: "Kalpurush" }}>
+                <Text className="text-gray-700 text-base" style={{ fontFamily: "Kalpurush" }}>
                   {lessonPlan.homework}
                 </Text>
               </View>
