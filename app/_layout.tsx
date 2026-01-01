@@ -101,7 +101,7 @@ export default function RootLayout() {
               
               <Image 
                 source={rtLogo} 
-                style={{ width: 80, height: 80 }} 
+                style={{ width: 60, height: 60 }} 
                 resizeMode="contain"
               />
             </View>
@@ -141,6 +141,8 @@ export default function RootLayout() {
       <Stack.Screen name="student" />
       <Stack.Screen name="teacher" />
       <Stack.Screen name="lesson-plan" />
+      <Stack.Screen name="ques-paper" />
+      <Stack.Screen name="gen-quiz" />
     </Stack>
   );
 }

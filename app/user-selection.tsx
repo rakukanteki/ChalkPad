@@ -90,7 +90,7 @@ const UserSelection: React.FC = () => {
 
             <Image
               source={rtLogo}
-              style={{ width: 80, height: 80 }}
+              style={{ width: 60, height: 60 }}
               resizeMode="contain"
             />
           </View>

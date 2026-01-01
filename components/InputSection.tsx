@@ -37,7 +37,7 @@ const InputSection = ({ handleInput, processing, error, demotext, onSubmit }: In
                 )}
                 {!error && (
                     <View style={{ height: 40 }}>
-                        <Text className="text-[12px] text-gray-500 mt-1">
+                        <Text className="text-[12px] text-gray-500 mt-1 text-center">
                             কৃত্রিম বুদ্ধিমত্তার মাধ্যমে তৈরি সারাংশ ভুলও থাকতে পারে। দয়া করে যাচাই করুন।
                         </Text>
                     </View>

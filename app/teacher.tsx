@@ -29,8 +29,8 @@ const TeacherDashboard: React.FC = () => {
     },
     { 
       id: 2, 
-      title: 'সংক্ষিপ্তকরণ', 
-      subtitle: 'বিষয়বস্তু সংক্ষিপ্ত করুন',
+      title: 'পাঠ সারাংশ', 
+      subtitle: 'পাঠ সারাংশ করুন',
       route: '/summarize', 
       colors: ['#4a1ba8', '#7c59cfff'],
       icon: '📝'
@@ -39,7 +39,7 @@ const TeacherDashboard: React.FC = () => {
       id: 3, 
       title: 'প্রশ্নপত্র তৈরি', 
       subtitle: 'পরীক্ষার প্রশ্ন তৈরি করুন',
-      route: '/create-question', 
+      route: '/ques-paper', 
       colors: ['#9e1d5a', '#be3f7fff'],
       icon: '📋'
     },
@@ -47,14 +47,14 @@ const TeacherDashboard: React.FC = () => {
       id: 4, 
       title: 'MCQ তৈরি', 
       subtitle: 'বহুনির্বাচনী প্রশ্ন তৈরি করুন',
-      route: '/generate-mcq', 
+      route: '/gen-quiz', 
       colors: ['#0a7d58', '#07b67cff'],
       icon: mcq
     },
   ];
 
   return (
-    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['bottom']}>
+    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top', 'bottom']}>
       <View className="flex-1 px-8 py-6">
         
         {/* Header Section */}

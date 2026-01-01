@@ -37,7 +37,7 @@ export default function LessonPlan() {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['bottom']}>
+    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top', 'bottom']}>
       {/* Header Section */}
       <View className="px-8 py-6 mt-8">
         <View className="flex-row items-center justify-between mb-2">
@@ -74,16 +74,9 @@ export default function LessonPlan() {
         {state === "initial" && (
           <View className="flex-1 justify-center px-6">
             <View className="items-center mb-8">
-              <Image source={robot} style={{ width: 150, height: 150 }} />
-              <Text
-                className="text-xl font-bold text-black mt-6 text-center"
-                style={{ fontFamily: "Kalpurush" }}
-              >
-                পাঠ পরিকল্পনা তৈরিতে আপনাকে স্বাগতম
-              </Text>
               <Text
                 numberOfLines={2}
-                className="text-base text-black-600 mt-3 text-center w-full"
+                className="text-base text-black-600 mt-40 text-center w-full"
                 style={{ fontFamily: "Kalpurush" }}
               >
                 যেকোনো বিষয়ে একটি নির্দেশনা লিখুন,{"\n"}আমরা সেটি থেকে পাঠ পরিকল্পনা তৈরি করব

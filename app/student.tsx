@@ -52,7 +52,7 @@ const StudentDashboard: React.FC = () => {
   ];
 
   return (
-    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['bottom']}>
+    <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top', 'bottom']}>
       <View className="flex-1 px-8 py-6">
         
         {/* Header Section */}
