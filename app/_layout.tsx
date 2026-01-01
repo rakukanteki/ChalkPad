@@ -143,6 +143,9 @@ export default function RootLayout() {
       <Stack.Screen name="lesson-plan" />
       <Stack.Screen name="ques-paper" />
       <Stack.Screen name="gen-quiz" />
+      <Stack.Screen name="syllabus" />
+      <Stack.Screen name="chapter-list" />
+      <Stack.Screen name="subject-list" />
     </Stack>
   );
 }

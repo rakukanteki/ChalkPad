@@ -13,7 +13,7 @@ const StudentDashboard: React.FC = () => {
   const handleNavigation = (route: string): void => {
     console.log(`Navigating to: ${route}`);
     // Uncomment when routes are ready
-    // router.push(route);
+    router.push(route);
   };
 
   const dashboardButtons = [
