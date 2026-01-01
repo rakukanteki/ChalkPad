@@ -61,3 +61,11 @@ module.exports = withNativeWind(config, { input: './app/globals.css' })
 ```js
 /// <reference types="nativewind/types"/>
 ```
+
+
+# REQUIRMENTS:
+```requirments.txt
+npx tailwindcss init
+npm install nativewind tailwindcss react-native-reanimated react-native-safe-area-context
+npm install @google/generative-ai
+npx expo install expo-web-browser expo-clipboard

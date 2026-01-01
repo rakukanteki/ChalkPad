@@ -21,7 +21,7 @@ const InputSection = ({ handleInput, processing, error, demotext, onSubmit }: In
                     className="border border-gray-300 rounded-lg px-2 py-2 bg-white text-base mb-2 text-black"
                     onChangeText={setInternalValue}
                     value={internalValue}
-                    placeholder="উদাহরণ: ফিলিস্তিনের ইতিহাস"
+                    placeholder="আপনার অনুসন্ধান লিখুন"
                     placeholderTextColor="#6B7280"
                     multiline
                     numberOfLines={6}

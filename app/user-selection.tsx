@@ -82,7 +82,7 @@ const UserSelection: React.FC = () => {
           <View className="flex-row items-center justify-center mb-4 w-full">
             <Image
               source={govtBdLogo}
-              style={{ width: 80, height: 80 }}
+              style={{ width: 90, height: 90 }}
               resizeMode="contain"
             />
 
@@ -90,7 +90,7 @@ const UserSelection: React.FC = () => {
 
             <Image
               source={rtLogo}
-              style={{ width: 60, height: 60 }}
+              style={{ width: 70, height: 70 }}
               resizeMode="contain"
             />
           </View>

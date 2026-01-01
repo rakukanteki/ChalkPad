@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
+    "@google/generative-ai": "^0.24.1",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
     "expo": "~54.0.30",
+    "expo-clipboard": "~8.0.8",
     "expo-constants": "~18.0.12",
     "expo-font": "~14.0.10",
     "expo-haptics": "~15.0.8",
