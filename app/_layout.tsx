@@ -135,17 +135,6 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="index" /> */}
-      <Stack.Screen name="user-selection" />
-      <Stack.Screen name="student" />
-      <Stack.Screen name="teacher" />
-      <Stack.Screen name="lesson-plan" />
-      <Stack.Screen name="ques-paper" />
-      <Stack.Screen name="gen-quiz" />
-      <Stack.Screen name="syllabus" />
-      <Stack.Screen name="chapter-list" />
-      <Stack.Screen name="subject-list" />
-    </Stack>
+    <Stack screenOptions={{ headerShown: false }}></Stack>
   );
 }

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const backButton = require('../assets/icons/previous-button.png');
+const backButton = require('@/assets/icons/previous-button.png');
 
 export default function Summary() {
   const [summary, setSummary] = useState('');

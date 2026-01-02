@@ -19,7 +19,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { DEMO_QUESTION_PROMPT, generateQuestionPaper } from "@/utils/gemini";
 
-const backButton = require('../assets/icons/previous-button.png');
+const backButton = require('@/assets/icons/previous-button.png');
 
 type QuestionPaperType = {
   title: string;

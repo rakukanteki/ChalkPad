@@ -1,13 +1,13 @@
+import InputSection from "@/components/InputSection";
 import { DEMO_LESSON_PROMPT, generateLessonPlan } from "@/utils/gemini";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import InputSection from "../components/InputSection";
 
-const robot = require('../assets/images/robot.png');
-const backButton = require('../assets/icons/previous-button.png');
+const robot = require('@/assets/images/robot.png');
+const backButton = require('@/assets/icons/previous-button.png');
 
 type LessonPlanType = {
   lessonTitle: string;

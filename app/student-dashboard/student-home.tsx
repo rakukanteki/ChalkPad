@@ -4,12 +4,10 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const goButton = require('../assets/icons/go.png');
-const mcq = require('../assets/icons/mcq.png');
-const backButton = require('../assets/icons/previous-button.png');
+const goButton = require('@/assets/icons/go.png');
+const backButton = require('@/assets/icons/previous-button.png');
 
-
-const TeacherDashboard: React.FC = () => {
+const StudentDashboard: React.FC = () => {
   const router = useRouter();
 
   const handleNavigation = (route: string): void => {
@@ -21,36 +19,36 @@ const TeacherDashboard: React.FC = () => {
   const dashboardButtons = [
     { 
       id: 1, 
-      title: 'পাঠ পরিকল্পনা', 
-      subtitle: 'পাঠ্যক্রম পরিকল্পনা করুন',
-      route: '/lesson-plan', 
-      colors: ['#c91f04', '#cc6c60ff'],
-      icon: '📖'
+      title: 'প্রশ্নোত্তর', 
+      subtitle: 'প্রশ্ন করুন ও জানুন',
+      route: '/student-dashboard/qna', 
+      colors: ['#9e1d5a', '#be3f7fff'],
+      icon: '💬'
     },
     { 
       id: 2, 
-      title: 'পাঠ সারাংশ', 
-      subtitle: 'পাঠ সারাংশ করুন',
-      route: '/summarize', 
-      colors: ['#4a1ba8', '#7c59cfff'],
-      icon: '📝'
-    },
-    { 
-      id: 3, 
-      title: 'প্রশ্নপত্র তৈরি', 
-      subtitle: 'পরীক্ষার প্রশ্ন তৈরি করুন',
-      route: '/ques-paper', 
-      colors: ['#9e1d5a', '#be3f7fff'],
-      icon: '📋'
-    },
-    { 
-      id: 4, 
-      title: 'MCQ তৈরি', 
-      subtitle: 'বহুনির্বাচনী প্রশ্ন তৈরি করুন',
-      route: '/gen-quiz', 
+      title: 'পরীক্ষা', 
+      subtitle: 'পরীক্ষার প্রস্তুতি',
+      route: '/student-dashboard/exam', 
       colors: ['#0a7d58', '#07b67cff'],
-      icon: mcq
+      icon: '✍️'
     },
+    // { 
+    //   id: 3, 
+    //   title: 'অ্যাসাইনমেন্ট', 
+    //   subtitle: 'আপনার কাজ দেখুন',
+    //   route: '/student-dashboard/assignments', 
+    //   colors: ['#c91f04', '#cc6c60ff'],
+    //   icon: '📝'
+    // },
+    // { 
+    //   id: 4, 
+    //   title: 'সিলেবাস', 
+    //   subtitle: 'পাঠ্যক্রম দেখুন',
+    //   route: '/student-dashboard/syllabus', 
+    //   colors: ['#4a1ba8', '#7c59cfff'],
+    //   icon: '📚'
+    // },
   ];
 
   return (
@@ -68,7 +66,7 @@ const TeacherDashboard: React.FC = () => {
             >
               <Image 
                 source={backButton} 
-                className="w-15 h-8"
+                className="w-15 h-8" 
                 resizeMode="contain"
               />
             </TouchableOpacity>
@@ -79,14 +77,14 @@ const TeacherDashboard: React.FC = () => {
               className="text-black text-2xl font-bold text-center flex-1"
               style={{ fontFamily: 'Kalpurush' }}
             >
-              শিক্ষক ড্যাশবোর্ড
+              শিক্ষার্থী ড্যাশবোর্ড
             </Text>
 
             {/* Spacer for alignment */}
             <View className="w-10 h-10" />
           </View>
 
-          <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
+          <View className="w-16 h-1 bg-red-500 rounded-full self-center" />
           <Text 
             className="text-gray-400 text-base text-center mt-3"
             style={{ fontFamily: 'Kalpurush' }}
@@ -97,12 +95,17 @@ const TeacherDashboard: React.FC = () => {
         {/* Dashboard Buttons Grid */}
         <View className="flex-1 justify-center">
           <View className="gap-5">
-            {dashboardButtons.map((button) => (
+            {dashboardButtons.map((button, index) => (
               <TouchableOpacity
                 key={button.id}
                 onPress={() => handleNavigation(button.route)}
                 activeOpacity={0.85}
-                style={styles.buttonShadow}
+                style={[
+                  styles.buttonShadow,
+                  { 
+                    transform: [{ scale: 1 }],
+                  }
+                ]}
               >
                 <LinearGradient
                   colors={button.colors}
@@ -112,15 +115,7 @@ const TeacherDashboard: React.FC = () => {
                 >
                   <View className="flex-row items-center">
                     <View className="bg-white/20 rounded-full w-14 h-14 items-center justify-center mr-4">
-                      {typeof button.icon === 'string' ? (
-                        <Text className="text-3xl">{button.icon}</Text>
-                      ) : (
-                        <Image
-                          source={button.icon}
-                          className="w-8 h-8"
-                          resizeMode="contain"
-                        />
-                      )}
+                      <Text className="text-3xl">{button.icon}</Text>
                     </View>
                     <View className="flex-1">
                       <Text
@@ -169,4 +164,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TeacherDashboard;
+export default StudentDashboard;

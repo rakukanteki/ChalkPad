@@ -23,7 +23,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const backButton = require('../assets/icons/previous-button.png');
+const backButton = require('@/assets/icons/previous-button.png');
 
 type QuizQuestion = {
   question: string;
@@ -184,7 +184,6 @@ export default function Quiz() {
                   >
                     যেকোনো বিষয় লিখুন,{'\n'}
                     আমরা সেটি থেকে MCQ প্রশ্নপত্র তৈরি করব।{'\n'}
-                    উদাহরণ: "মেশিন লার্নিং এর উপর ১০টি MCQ"
                   </Text>
                 </View>
 
