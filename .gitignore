@@ -44,3 +44,4 @@ app-example
 utils/
 assets/
 node_modules/
+.env
