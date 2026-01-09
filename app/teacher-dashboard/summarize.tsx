@@ -7,10 +7,16 @@ import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacit
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const backButton = require('@/assets/icons/previous-button.png');
+const userAvatar = require('@/assets/icons/user.png');
 
 export default function Summary() {
   const [summary, setSummary] = useState('');
   const [state, setState] = useState<'initial' | 'pending' | 'fetched'>('initial');
+
+  const handleProfilePress = (): void => {
+    // Navigate to profile screen
+    router.push('/(tabs)/profile'); // Adjust the route as needed
+  };
 
   const submitPrompt = async (promptText: string) => {
     if (!promptText.trim()) return;
@@ -47,14 +53,25 @@ export default function Summary() {
           {/* Title */}
           <Text 
             numberOfLines={1}
-            className="text-black text-2xl font-bold text-center flex-1"
+            className="text-black text-2xl font-bold text-center flex-1 mx-2"
             style={{ fontFamily: 'Kalpurush' }}
           >
             পাঠ সারাংশ
           </Text>
 
-          {/* Spacer for alignment */}
-          <View className="w-10 h-10" />
+          {/* Profile Icon */}
+          <TouchableOpacity 
+            onPress={handleProfilePress}
+            className="w-10 h-10 rounded-full overflow-hidden border-2"
+            activeOpacity={0.7}
+            style={styles.profileShadow}
+          >
+            <Image 
+              source={ userAvatar }
+              className="w-full h-full"
+              resizeMode="cover"
+            />
+          </TouchableOpacity>
         </View>
 
         <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
@@ -141,5 +158,15 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  profileShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });

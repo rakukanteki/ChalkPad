@@ -7,15 +7,19 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const goButton = require('@/assets/icons/go.png');
 const mcq = require('@/assets/icons/mcq.png');
 const backButton = require('@/assets/icons/previous-button.png');
-
+const userAvatar = require('@/assets/icons/user.png');
 
 const TeacherDashboard: React.FC = () => {
   const router = useRouter();
 
   const handleNavigation = (route: string): void => {
     console.log(`Navigating to: ${route}`);
-    // Uncomment when routes are ready
     router.push(route);
+  };
+
+  const handleProfilePress = (): void => {
+    // Navigate to profile screen
+    router.push('/(tabs)/profile'); // Adjust the route as needed
   };
 
   const dashboardButtons = [
@@ -76,14 +80,25 @@ const TeacherDashboard: React.FC = () => {
             {/* Title */}
             <Text 
               numberOfLines={1}
-              className="text-black text-2xl font-bold text-center flex-1"
+              className="text-black text-2xl font-bold text-center flex-1 mx-2"
               style={{ fontFamily: 'Kalpurush' }}
             >
               শিক্ষক ড্যাশবোর্ড
             </Text>
 
-            {/* Spacer for alignment */}
-            <View className="w-10 h-10" />
+            {/* Profile Icon */}
+            <TouchableOpacity 
+              onPress={handleProfilePress}
+              className="w-10 h-10 rounded-full overflow-hidden border-2"
+              activeOpacity={0.7}
+              style={styles.profileShadow}
+            >
+              <Image 
+                source={ userAvatar }
+                className="w-full h-full"
+                resizeMode="cover"
+              />
+            </TouchableOpacity>
           </View>
 
           <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
@@ -166,6 +181,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
+  },
+  profileShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });
 

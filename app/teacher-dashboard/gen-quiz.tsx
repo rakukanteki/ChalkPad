@@ -24,6 +24,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const backButton = require('@/assets/icons/previous-button.png');
+const userAvatar = require('@/assets/icons/user.png');
 
 type QuizQuestion = {
   question: string;
@@ -38,6 +39,11 @@ export default function Quiz() {
   const [exporting, setExporting] = useState(false);
   const [showAnswers, setShowAnswers] = useState(true);
   const [showExplanations, setShowExplanations] = useState(true);
+
+  const handleProfilePress = (): void => {
+    // Navigate to profile screen
+    router.push('/(tabs)/profile'); // Adjust the route as needed
+  };
 
   const submitPrompt = useCallback(async (promptText: string) => {
     setState('pending');
@@ -158,9 +164,19 @@ export default function Quiz() {
           >
             MCQ তৈরি
           </Text>
-
-          {/* Spacer for alignment */}
-          <View className="w-10 h-10" />
+          {/* Profile Icon */}
+          <TouchableOpacity 
+            onPress={handleProfilePress}
+            className="w-10 h-10 rounded-full overflow-hidden border-2"
+            activeOpacity={0.7}
+            style={styles.profileShadow}
+          >
+          <Image 
+            source={userAvatar}
+            className="w-full h-full"
+            resizeMode="cover"
+          />
+          </TouchableOpacity>
         </View>
 
         <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
@@ -417,5 +433,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 8,
     elevation: 5,
+  },
+  profileShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });

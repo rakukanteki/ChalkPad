@@ -6,8 +6,8 @@ import { useCallback, useState } from "react";
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const robot = require('@/assets/images/robot.png');
 const backButton = require('@/assets/icons/previous-button.png');
+const userAvatar = require('@/assets/icons/user.png');
 
 type LessonPlanType = {
   lessonTitle: string;
@@ -23,6 +23,11 @@ type LessonPlanType = {
 export default function LessonPlan() {
   const [lessonPlan, setLessonPlan] = useState<LessonPlanType | null>(null);
   const [state, setState] = useState<"initial" | "pending" | "fetched">("initial");
+
+  const handleProfilePress = (): void => {
+    // Navigate to profile screen
+    router.push('/profile'); // Adjust the route as needed
+  };
 
   const submitPrompt = useCallback(async (promptText: string) => {
     setState("pending");
@@ -57,14 +62,25 @@ export default function LessonPlan() {
           {/* Title */}
           <Text 
             numberOfLines={1}
-            className="text-black text-2xl font-bold text-center flex-1"
+            className="text-black text-2xl font-bold text-center flex-1 mx-2"
             style={{ fontFamily: 'Kalpurush' }}
           >
             পাঠ পরিকল্পনা
           </Text>
 
-          {/* Spacer for alignment */}
-          <View className="w-10 h-10" />
+          {/* Profile Icon */}
+          <TouchableOpacity 
+            onPress={handleProfilePress}
+            className="w-10 h-10 rounded-full overflow-hidden border-2"
+            activeOpacity={0.7}
+            style={styles.profileShadow}
+          >
+            <Image 
+              source={ userAvatar }
+              className="w-full h-full"
+              resizeMode="cover"
+            />
+          </TouchableOpacity>
         </View>
 
         <View className="w-16 h-1 bg-green-500 rounded-full self-center" />
@@ -256,5 +272,15 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  profileShadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
   },
 });
