@@ -23,6 +23,11 @@ npx tailwindcss init
 npm install nativewind tailwindcss react-native-reanimated react-native-safe-area-context
 npm install @google/generative-ai
 npx expo install expo-web-browser expo-clipboard
+npm install firebase
+npm i @react-native-async-storage/async-storage
+npm install -g firebase-tools
+npx expo install @react-native-firebase/app @react-native-firebase/auth
+npx expo install expo-build-properties
 ```
 ## Setup Native Wind and Typescript.
 - `tailwind.config.js` file:

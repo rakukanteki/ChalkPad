@@ -1,5 +1,5 @@
 import InputSection from "@/components/InputSection";
-import { DEMO_LESSON_PROMPT, generateLessonPlan } from "@/utils/gemini";
+import { DEMO_LESSON_PROMPT, generateLessonPlan } from "@/utils/models/lesson-plan";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
