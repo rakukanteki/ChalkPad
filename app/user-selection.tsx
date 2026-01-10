@@ -11,7 +11,7 @@ const UserSelection: React.FC = () => {
 
   const handleUserTypeSelection = (userType: 'student' | 'teacher'): void => {
     console.log(`Selected user type: ${userType}`);
-    router.push(userType === 'student' ? '/student-dashboard/student-home' : '/teacher-dashboard/teacher-home');
+    router.push(userType === 'student' ? '/(student)/student-home' : '/(teacher)/teacher-home');
   };
 
   return (

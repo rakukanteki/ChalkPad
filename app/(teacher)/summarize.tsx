@@ -15,7 +15,7 @@ export default function Summary() {
 
   const handleProfilePress = (): void => {
     // Navigate to profile screen
-    router.push('/(tabs)/profile'); // Adjust the route as needed
+    router.push('/profile'); // Adjust the route as needed
   };
 
   const submitPrompt = async (promptText: string) => {

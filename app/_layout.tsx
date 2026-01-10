@@ -12,13 +12,11 @@ const chalkpadLogo = require('@/assets/images/icon.png');
 const govtBdLogo = require('@/assets/images/govt-bd.png');
 const rtLogo = require('@/assets/images/rtlogo.png');
 
-// Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
   
-  // Globally load all fonts when app starts
   const [fontsLoaded, fontError] = useFonts({
     'Kalpurush': require('@/assets/fonts/kalpurush.ttf'),
   });
@@ -26,17 +24,15 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepare() {
       try {
-        // Preload images
         await Promise.all([
           Asset.fromModule(chalkpadLogo).downloadAsync(),
           Asset.fromModule(govtBdLogo).downloadAsync(),
           Asset.fromModule(rtLogo).downloadAsync(),
         ]);
         
-        // Wait for fonts to load
         if (fontsLoaded || fontError) {
-          // Ensure splash screen shows for at least 3 seconds
-          await new Promise(resolve => setTimeout(resolve, 3000));
+          // Reduced to 2 seconds for better UX
+          await new Promise(resolve => setTimeout(resolve, 2000));
           setAppReady(true);
         }
       } catch (e) {
@@ -49,17 +45,14 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (appReady) {
-      // Hide splash screen once everything is ready
       SplashScreen.hideAsync();
     }
   }, [appReady]);
 
-  // Show loading screen while fonts are loading or waiting for 3 seconds
   if (!appReady && !fontError) {
     return (
       <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top', 'bottom']}>
         <View className="flex-1 items-center justify-between py-8 px-8">
-          {/* Main Content - Centered */}
           <View className="flex-1 items-center justify-center">
             <Image 
               source={chalkpadLogo} 
@@ -86,19 +79,14 @@ export default function RootLayout() {
             </Text>
           </View>
 
-          {/* Bottom Section - Logos and Text */}
           <View className="items-center w-full">
-            {/* Logo Container with Divider */}
             <View className="flex-row items-center justify-center mb-4 w-full">
               <Image 
                 source={govtBdLogo} 
                 style={{ width: 80, height: 80 }} 
                 resizeMode="contain"
               />
-              
-              {/* Divider */}
               <View className="h-12 w-px bg-gray-600 mx-6" />
-              
               <Image 
                 source={rtLogo} 
                 style={{ width: 60, height: 60 }} 
@@ -106,7 +94,6 @@ export default function RootLayout() {
               />
             </View>
 
-            {/* Bottom Text */}
             <Text 
               numberOfLines={1}
               ellipsizeMode='clip'
@@ -122,7 +109,6 @@ export default function RootLayout() {
     );
   }
 
-  // Show error screen if font loading failed
   if (fontError) {
     return (
       <SafeAreaView className="flex-1 bg-red-900" edges={['top', 'bottom']}>
@@ -135,6 +121,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}></Stack>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="user-selection" />
+      <Stack.Screen name="(student)" />
+      <Stack.Screen name="(teacher)" />
+      <Stack.Screen name="profile" />
+    </Stack>
   );
 }

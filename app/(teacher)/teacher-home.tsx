@@ -19,7 +19,7 @@ const TeacherDashboard: React.FC = () => {
 
   const handleProfilePress = (): void => {
     // Navigate to profile screen
-    router.push('/(tabs)/profile'); // Adjust the route as needed
+    router.push('/profile'); // Adjust the route as needed
   };
 
   const dashboardButtons = [
@@ -27,7 +27,7 @@ const TeacherDashboard: React.FC = () => {
       id: 1, 
       title: 'পাঠ পরিকল্পনা', 
       subtitle: 'পাঠ্যক্রম পরিকল্পনা করুন',
-      route: '/teacher-dashboard/lesson-plan', 
+      route: '/(teacher)/lesson-plan', 
       colors: ['#c91f04', '#cc6c60ff'],
       icon: '📖'
     },
@@ -35,7 +35,7 @@ const TeacherDashboard: React.FC = () => {
       id: 2, 
       title: 'পাঠ সারাংশ', 
       subtitle: 'পাঠ সারাংশ করুন',
-      route: '/teacher-dashboard/summarize', 
+      route: '/(teacher)/summarize', 
       colors: ['#4a1ba8', '#7c59cfff'],
       icon: '📝'
     },
@@ -43,7 +43,7 @@ const TeacherDashboard: React.FC = () => {
       id: 3, 
       title: 'প্রশ্নপত্র তৈরি', 
       subtitle: 'পরীক্ষার প্রশ্ন তৈরি করুন',
-      route: '/teacher-dashboard/ques-paper', 
+      route: '/(teacher)/ques-paper', 
       colors: ['#9e1d5a', '#be3f7fff'],
       icon: '📋'
     },
@@ -51,7 +51,7 @@ const TeacherDashboard: React.FC = () => {
       id: 4, 
       title: 'MCQ তৈরি', 
       subtitle: 'বহুনির্বাচনী প্রশ্ন তৈরি করুন',
-      route: '/teacher-dashboard/gen-quiz', 
+      route: '/(teacher)/gen-quiz', 
       colors: ['#0a7d58', '#07b67cff'],
       icon: mcq
     },

@@ -6,73 +6,63 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const goButton = require('@/assets/icons/go.png');
 const backButton = require('@/assets/icons/previous-button.png');
+const userAvatar = require('@/assets/icons/user.png');
 
 const StudentDashboard: React.FC = () => {
   const router = useRouter();
-
+  
   const handleNavigation = (route: string): void => {
     console.log(`Navigating to: ${route}`);
-    // Uncomment when routes are ready
     router.push(route);
+  };
+  
+  const handleProfilePress = (): void => {
+    // Navigate to profile screen
+    router.push('/profile'); // Adjust the route as needed
   };
 
   const dashboardButtons = [
-    { 
-      id: 1, 
-      title: 'প্রশ্নোত্তর', 
+    {
+      id: 1,
+      title: 'প্রশ্নোত্তর',
       subtitle: 'প্রশ্ন করুন ও জানুন',
-      route: '/student-dashboard/qna', 
-      colors: ['#9e1d5a', '#be3f7fff'],
-      icon: '💬'
+      route: '/(student)/qna',
+      colors: ['#9e1d5a', '#be3f7f'],
+      icon: '💬',
     },
-    { 
-      id: 2, 
-      title: 'পরীক্ষা', 
+    {
+      id: 2,
+      title: 'পরীক্ষা',
       subtitle: 'পরীক্ষার প্রস্তুতি',
-      route: '/student-dashboard/exam', 
-      colors: ['#0a7d58', '#07b67cff'],
-      icon: '✍️'
+      route: '/(student)/exam',
+      colors: ['#0a7d58', '#07b67c'],
+      icon: '✍️',
     },
-    // { 
-    //   id: 3, 
-    //   title: 'অ্যাসাইনমেন্ট', 
-    //   subtitle: 'আপনার কাজ দেখুন',
-    //   route: '/student-dashboard/assignments', 
-    //   colors: ['#c91f04', '#cc6c60ff'],
-    //   icon: '📝'
-    // },
-    // { 
-    //   id: 4, 
-    //   title: 'সিলেবাস', 
-    //   subtitle: 'পাঠ্যক্রম দেখুন',
-    //   route: '/student-dashboard/syllabus', 
-    //   colors: ['#4a1ba8', '#7c59cfff'],
-    //   icon: '📚'
-    // },
   ];
 
   return (
     <SafeAreaView className="flex-1 bg-[#F5F5F5]" edges={['top', 'bottom']}>
       <View className="flex-1 px-8 py-6">
-        
-        {/* Header Section */}
+
+        {/* Header */}
         <View className="mb-8 mt-8">
           <View className="flex-row items-center justify-between mb-2">
+
             {/* Back Button */}
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={() => router.back()}
               className="w-10 h-10 items-center justify-center"
               activeOpacity={0.7}
             >
-              <Image 
-                source={backButton} 
-                className="w-15 h-8" 
+              <Image
+                source={backButton}
+                className="w-8 h-8"
                 resizeMode="contain"
               />
             </TouchableOpacity>
 
             {/* Title */}
-            <Text 
+            <Text
               numberOfLines={1}
               className="text-black text-2xl font-bold text-center flex-1"
               style={{ fontFamily: 'Kalpurush' }}
@@ -80,32 +70,35 @@ const StudentDashboard: React.FC = () => {
               শিক্ষার্থী ড্যাশবোর্ড
             </Text>
 
-            {/* Spacer for alignment */}
-            <View className="w-10 h-10" />
+            {/* Profile Icon */}
+            <TouchableOpacity
+              onPress={handleProfilePress}
+              className="w-10 h-10 rounded-full overflow-hidden border-2"
+              activeOpacity={0.7}
+              style={styles.profileShadow}
+            >
+              <Image
+                source={userAvatar}
+                className="w-full h-full"
+                resizeMode="cover"
+              />
+            </TouchableOpacity>
+
           </View>
 
+          {/* Underline */}
           <View className="w-16 h-1 bg-red-500 rounded-full self-center" />
-          <Text 
-            className="text-gray-400 text-base text-center mt-3"
-            style={{ fontFamily: 'Kalpurush' }}
-          >
-          </Text>
         </View>
 
-        {/* Dashboard Buttons Grid */}
+        {/* Dashboard Buttons */}
         <View className="flex-1 justify-center">
           <View className="gap-5">
-            {dashboardButtons.map((button, index) => (
+            {dashboardButtons.map((button) => (
               <TouchableOpacity
                 key={button.id}
                 onPress={() => handleNavigation(button.route)}
                 activeOpacity={0.85}
-                style={[
-                  styles.buttonShadow,
-                  { 
-                    transform: [{ scale: 1 }],
-                  }
-                ]}
+                style={styles.buttonShadow}
               >
                 <LinearGradient
                   colors={button.colors}
@@ -117,6 +110,7 @@ const StudentDashboard: React.FC = () => {
                     <View className="bg-white/20 rounded-full w-14 h-14 items-center justify-center mr-4">
                       <Text className="text-3xl">{button.icon}</Text>
                     </View>
+
                     <View className="flex-1">
                       <Text
                         className="text-white text-xl font-bold mb-1"
@@ -131,8 +125,13 @@ const StudentDashboard: React.FC = () => {
                         {button.subtitle}
                       </Text>
                     </View>
+
                     <View className="bg-white/20 rounded-full w-8 h-8 items-center justify-center">
-                        <Image source={goButton} className="w-9 h-9" resizeMode="contain" />
+                      <Image
+                        source={goButton}
+                        className="w-6 h-6"
+                        resizeMode="contain"
+                      />
                     </View>
                   </View>
                 </LinearGradient>
@@ -140,10 +139,13 @@ const StudentDashboard: React.FC = () => {
             ))}
           </View>
         </View>
+
       </View>
     </SafeAreaView>
   );
 };
+
+export default StudentDashboard;
 
 const styles = StyleSheet.create({
   gradient: {
@@ -154,14 +156,16 @@ const styles = StyleSheet.create({
   },
   buttonShadow: {
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
   },
+  profileShadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
 });
-
-export default StudentDashboard;
